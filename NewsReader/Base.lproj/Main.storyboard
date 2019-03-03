@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dzi-gU-dpj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rik-lv-JyJ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Live View Controller-->
+        <!--一覧-->
         <scene sceneID="lJi-cI-7mW">
             <objects>
                 <tableViewController id="dzi-gU-dpj" customClass="LiveViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,6 +35,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="bEF-G8-sFK" kind="show" id="XbF-hg-zSA"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -41,10 +45,63 @@
                             <outlet property="delegate" destination="dzi-gU-dpj" id="RiQ-lb-Dax"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="一覧" id="qs9-oh-7Tu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ERz-Ey-7HW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-210" y="-35"/>
+            <point key="canvasLocation" x="732" y="-35.467980295566505"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="dkA-6a-Jnn">
+            <objects>
+                <viewController id="bEF-G8-sFK" customClass="DetailViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QsI-0b-Qnm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dz8-yG-AF4">
+                                <rect key="frame" x="0.0" y="8" width="375" height="804"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Dz8-yG-AF4" firstAttribute="top" secondItem="QsI-0b-Qnm" secondAttribute="topMargin" constant="-80" id="7GM-Ho-DZk"/>
+                            <constraint firstItem="Dz8-yG-AF4" firstAttribute="leading" secondItem="QsI-0b-Qnm" secondAttribute="leading" id="Cgk-2i-hKe"/>
+                            <constraint firstAttribute="trailing" secondItem="Dz8-yG-AF4" secondAttribute="trailing" id="kOF-Lm-dGU"/>
+                            <constraint firstAttribute="bottom" secondItem="Dz8-yG-AF4" secondAttribute="bottom" id="skR-ek-qA4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="c7a-GS-4Sb"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="Dz8-yG-AF4" id="mfI-OT-Sgj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WWQ-Xo-le0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1680.8" y="-34.729064039408868"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BLb-qd-Ovi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rik-lv-JyJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b0W-uv-FxK">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="dzi-gU-dpj" kind="relationship" relationship="rootViewController" id="RVV-MO-wFF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I6u-0V-qWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-210.40000000000001" y="-35.467980295566505"/>
         </scene>
     </scenes>
 </document>

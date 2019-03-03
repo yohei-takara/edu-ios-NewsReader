@@ -81,6 +81,13 @@ class LiveViewController: UITableViewController, XMLParserDelegate {
         self.tableView.reloadData()
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexxPath = self.tableView.indexPathForSelectedRow {
+            let item = items[indexxPath.row]
+            let controller = segue.destination as! DetailViewController
+            controller.title = item.title
+            controller.link = item.link
+        }
+    }
     
 }
